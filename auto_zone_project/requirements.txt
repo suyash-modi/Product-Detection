@@ -1,0 +1,14 @@
+opencv-python>=4.8.0
+numpy>=1.24.0
+openvino>=2024.0.0
+Pillow>=10.0.0
+ultralytics>=8.0.0
+torch>=2.0.0
+# BLIP VQA (Salesforce/blip-vqa-base) for product analysis; supports 4.30+
+transformers>=4.30.0
+huggingface_hub>=0.20.0
+accelerate>=0.27.0
+requests>=2.31.0
+beautifulsoup4>=4.12.0
+# Optional for CPU-friendly quantization backends
+# bitsandbytes

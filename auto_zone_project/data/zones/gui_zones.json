@@ -1,0 +1,62 @@
+[
+    {
+        "product": "cell phone",
+        "confidence": 0.77,
+        "bbox": [
+            148,
+            94,
+            136,
+            273
+        ],
+        "avg_color": [
+            174.56111290670114,
+            153.00646412411118,
+            149.56946240034475
+        ],
+        "crop_path": "C:\\Python Projects\\Product Detection\\auto_zone_project\\data\\products\\product_cell_phone_0_94_148.jpg",
+        "search_results": [
+            {
+                "title": "Apple Accessories for Mobile. Buy Genuine Mobiles Accessories Apple at ...",
+                "price": "",
+                "source": "Flipkart",
+                "link": "https://www.flipkart.com/mobiles-accessories/apple~brand/pr?sid=tyy",
+                "analysis": {
+                    "brand": "apple",
+                    "product_type": "cell phone",
+                    "color": "silver",
+                    "features": "buttons"
+                }
+            }
+        ]
+    },
+    {
+        "product": "toothbrush",
+        "confidence": 0.62,
+        "bbox": [
+            415,
+            71,
+            150,
+            300
+        ],
+        "avg_color": [
+            159.85082222222223,
+            135.02815555555554,
+            142.8562
+        ],
+        "crop_path": "C:\\Python Projects\\Product Detection\\auto_zone_project\\data\\products\\product_toothbrush_1_71_415.jpg",
+        "search_results": [
+            {
+                "title": "Not a clear image",
+                "price": "",
+                "source": "",
+                "link": "",
+                "analysis": {
+                    "brand": "Not clearly visible",
+                    "product_type": "book",
+                    "color": "white",
+                    "features": "buttons"
+                }
+            }
+        ]
+    }
+]

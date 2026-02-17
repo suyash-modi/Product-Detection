@@ -1,0 +1,52 @@
+[
+    {
+        "product": "spoon",
+        "confidence": 0.82,
+        "bbox": [
+            197,
+            105,
+            115,
+            33
+        ]
+    },
+    {
+        "product": "cell phone",
+        "confidence": 0.8,
+        "bbox": [
+            159,
+            408,
+            110,
+            40
+        ]
+    },
+    {
+        "product": "vase",
+        "confidence": 0.78,
+        "bbox": [
+            351,
+            209,
+            56,
+            66
+        ]
+    },
+    {
+        "product": "laptop",
+        "confidence": 0.77,
+        "bbox": [
+            216,
+            363,
+            232,
+            53
+        ]
+    },
+    {
+        "product": "fork",
+        "confidence": 0.72,
+        "bbox": [
+            205,
+            143,
+            69,
+            57
+        ]
+    }
+]

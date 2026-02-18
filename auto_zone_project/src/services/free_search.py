@@ -178,7 +178,8 @@ def free_search(query: str, rupees_only: bool = True) -> Dict[str, str]:
         return {}
 
     soup = BeautifulSoup(resp.text, "html.parser")
-    results = soup.select(".result")[:15]
+    # Look at up to 20 DuckDuckGo results for pricing
+    results = soup.select(".result")[:20]
 
     # On 202 DDG sometimes returns a "please wait" page with 0 .result; retry once after short delay
     if len(results) == 0 and resp.status_code == 202:
@@ -187,13 +188,13 @@ def free_search(query: str, rupees_only: bool = True) -> Dict[str, str]:
         resp = _fetch(DDG_HTML_URL)
         if resp and resp.status_code in (200, 202):
             soup = BeautifulSoup(resp.text, "html.parser")
-            results = soup.select(".result")[:15]
+            results = soup.select(".result")[:20]
             print(f"[Search] After retry: status={resp.status_code} .result count={len(results)}")
     if len(results) == 0 and DDG_HTML_URL_FALLBACK != DDG_HTML_URL:
         resp = _fetch(DDG_HTML_URL_FALLBACK)
         if resp and resp.status_code in (200, 202):
             soup = BeautifulSoup(resp.text, "html.parser")
-            results = soup.select(".result")[:15]
+            results = soup.select(".result")[:20]
             print(f"[Search] Fallback URL: .result count={len(results)}")
 
     logger.info("[Search] DDG .result count: %s", len(results))
@@ -206,7 +207,9 @@ def free_search(query: str, rupees_only: bool = True) -> Dict[str, str]:
     with_price = []
     # Known ecommerce without price (fallback so we still show title + source)
     ecommerce_no_price = []
-    known_domains = ("amazon", "flipkart", "myntra", "snapdeal", "croma")
+    # For top ecommerce sites, we may do a second pass on the product page
+    top_ecom_to_scrape = []
+    known_domains = ("amazon", "flipkart", "myntra", "snapdeal", "croma", "reliancedigital", "apple.com")
 
     for i, r in enumerate(results):
         a = r.select_one("a.result__a")
@@ -230,9 +233,11 @@ def free_search(query: str, rupees_only: bool = True) -> Dict[str, str]:
         is_known = any(d in href_lower for d in known_domains)
         if i < 5:
             print(f"[Search]   result[{i}] url={real_url[:60]}... price={price!r} known={is_known} snippet={snippet[:60]!r}...")
-        # Keep only valid price chars (digits, ., ,, Rs/₹/INR) so overlay never shows "???"
+        # Keep only valid price chars (digits, ., ,, Rs/₹/INR) and normalize formatting
         if price:
             price = re.sub(r"[^\d.,\sRs₹INR]", "", price, flags=re.I).strip() or price
+            # Drop trailing commas/periods so we don't log/return 'Rs. 20000,'
+            price = price.rstrip(" ,.")
             if price and not re.search(r"\d", price):
                 price = ""
         entry = {"title": title, "price": price or "", "source": source, "link": real_url}
@@ -250,6 +255,37 @@ def free_search(query: str, rupees_only: bool = True) -> Dict[str, str]:
                 with_price.append(entry)
         elif is_known and not price:
             ecommerce_no_price.append(entry)
+
+        # Track top ecommerce results that didn't expose a price in the snippet
+        if is_known and not price:
+            top_ecom_to_scrape.append(entry)
+
+    # Second pass: try to fetch price directly from top ecommerce product pages
+    # when snippet didn't contain a rupee value.
+    if rupees_only and top_ecom_to_scrape:
+        for entry in top_ecom_to_scrape:
+            url = entry.get("link") or ""
+            if not url:
+                continue
+            try:
+                resp = _fetch(url)
+                if not resp or resp.status_code != 200 or not resp.text:
+                    continue
+                page_price = _find_price_rupees(resp.text)
+                if not page_price:
+                    continue
+                # Reuse the same cleaning / normalization logic
+                page_price = re.sub(r"[^\d.,\sRs₹INR]", "", page_price, flags=re.I).strip() or page_price
+                page_price = page_price.rstrip(" ,.")
+                if page_price and re.search(r"\d", page_price):
+                    fixed = {**entry, "price": page_price}
+                    with_price.append(fixed)
+                    logger.info("[Search] Added price from product page: source=%s price=%s url=%s",
+                                fixed.get("source"), fixed.get("price"), url)
+                    print(f"[Search] Added price from product page: source={fixed.get('source')} price={fixed.get('price')} url={url}")
+            except Exception as e:
+                logger.warning("[Search] Error scraping price from %s: %s", url, e)
+                print(f"[Search] Error scraping price from {url}: {e}")
 
     # Return result with highest price (and its source); else first ecommerce
     if with_price:

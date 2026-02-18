@@ -125,9 +125,9 @@ class RetailAIApp:
                         r = max(sane, key=_price_val) if sane else min(results, key=_price_val)
                         # Line 1: short product title; strip "Buy " and site prefixes
                         title = (r.get('title') or '').strip()
-                        # If brand is unclear we skip search/price and show a single message
+                        # If brand/search is unclear, don't change the original detection label for this zone.
                         if title.strip().lower() in ("not a clear image", "not clearly visible"):
-                            cv2.putText(display_img, "Not a clear image", (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 0), 2)
+                            cv2.putText(display_img, z['product'], (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 0), 2)
                             continue
                         for prefix in ('Buy now ', 'Buy Now ', 'Buy ', 'Amazon.com: ', 'Amazon.in: ', 'Amazon: ', 'Flipkart: ', 'Myntra: '):
                             if title.lower().startswith(prefix.lower()):
@@ -143,12 +143,18 @@ class RetailAIApp:
                         # Line 2: use "Rs." (OpenCV putText can't render ₹, shows ???)
                         raw_price = (r.get('price') or '').strip()
                         digits_only = re.sub(r'[^\d.]', '', raw_price)
+                        # Avoid leading '.' from patterns like "Rs. 20000"
+                        digits_only = digits_only.lstrip('.')
                         price_display = digits_only if digits_only else ''
                         source = (r.get('source') or '').strip()
                         if source.lower() == 'duckduckgo':
                             source = 'Shop'
                         source = source or 'Shop'
-                        line2 = (f"Rs. {price_display}  {source}" if price_display else source) or "Shop"
+                        if price_display:
+                            line2 = f"Rs. {price_display}  {source}"
+                        else:
+                            # Make it clear we tried but found no price
+                            line2 = f"No price found  {source}"
                         cv2.putText(display_img, line1, (x, y - 32), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 0), 2)
                         cv2.putText(display_img, line2, (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.55, (0, 255, 0), 2)
                     else:

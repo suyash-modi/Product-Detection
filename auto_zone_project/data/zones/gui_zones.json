@@ -1,60 +1,60 @@
 [
     {
         "product": "cell phone",
-        "confidence": 0.77,
+        "confidence": 0.9,
         "bbox": [
-            148,
-            94,
-            136,
-            273
+            90,
+            192,
+            129,
+            226
         ],
         "avg_color": [
-            174.56111290670114,
-            153.00646412411118,
-            149.56946240034475
+            168.33583727790355,
+            155.21787747821912,
+            152.75403032173972
         ],
-        "crop_path": "C:\\Python Projects\\Product Detection\\auto_zone_project\\data\\products\\product_cell_phone_0_94_148.jpg",
+        "crop_path": "C:\\Python Projects\\Product Detection\\auto_zone_project\\data\\products\\product_cell_phone_0_192_90.jpg",
         "search_results": [
             {
-                "title": "Apple Accessories for Mobile. Buy Genuine Mobiles Accessories Apple at ...",
-                "price": "",
-                "source": "Flipkart",
-                "link": "https://www.flipkart.com/mobiles-accessories/apple~brand/pr?sid=tyy",
+                "title": "Buy iPhone 17 256GB White - Apple (IN)",
+                "price": "\u20b964000.00",
+                "source": "Apple",
+                "link": "https://www.apple.com/in/shop/buy-iphone/iphone-17/6.3\"-display-256gb-white",
                 "analysis": {
                     "brand": "apple",
-                    "product_type": "cell phone",
-                    "color": "silver",
-                    "features": "buttons"
+                    "product_type": "iphone",
+                    "color": "white",
+                    "features": "camera"
                 }
             }
         ]
     },
     {
-        "product": "toothbrush",
-        "confidence": 0.62,
+        "product": "clock",
+        "confidence": 0.76,
         "bbox": [
-            415,
-            71,
-            150,
-            300
+            192,
+            40,
+            113,
+            82
         ],
         "avg_color": [
-            159.85082222222223,
-            135.02815555555554,
-            142.8562
+            239.95898985538528,
+            217.71929635225555,
+            200.47625728469674
         ],
-        "crop_path": "C:\\Python Projects\\Product Detection\\auto_zone_project\\data\\products\\product_toothbrush_1_71_415.jpg",
+        "crop_path": "C:\\Python Projects\\Product Detection\\auto_zone_project\\data\\products\\product_clock_1_40_192.jpg",
         "search_results": [
             {
-                "title": "Not a clear image",
-                "price": "",
-                "source": "",
-                "link": "",
+                "title": "Amazon.in: Timex Smartwatch",
+                "price": "\u20b92,997",
+                "source": "Amazon",
+                "link": "https://www.amazon.in/timex-smartwatch/s?k=timex+smartwatch",
                 "analysis": {
-                    "brand": "Not clearly visible",
-                    "product_type": "book",
-                    "color": "white",
-                    "features": "buttons"
+                    "brand": "timex",
+                    "product_type": "watch",
+                    "color": "black",
+                    "features": "space bar"
                 }
             }
         ]

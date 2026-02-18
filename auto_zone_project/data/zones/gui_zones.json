@@ -1,29 +1,29 @@
 [
     {
         "product": "cell phone",
-        "confidence": 0.9,
+        "confidence": 0.84,
         "bbox": [
-            90,
-            192,
-            129,
-            226
+            30,
+            135,
+            159,
+            299
         ],
         "avg_color": [
-            168.33583727790355,
-            155.21787747821912,
-            152.75403032173972
+            154.1245030605162,
+            137.00220861992807,
+            130.00176689594244
         ],
-        "crop_path": "C:\\Python Projects\\Product Detection\\auto_zone_project\\data\\products\\product_cell_phone_0_192_90.jpg",
+        "crop_path": "C:\\Python Projects\\Product Detection\\auto_zone_project\\data\\products\\product_cell_phone_0_135_30.jpg",
         "search_results": [
             {
-                "title": "Buy iPhone 17 256GB White - Apple (IN)",
-                "price": "\u20b964000.00",
+                "title": "Apple Store Online - Apple (IN)",
+                "price": "\u20b9134900.00",
                 "source": "Apple",
-                "link": "https://www.apple.com/in/shop/buy-iphone/iphone-17/6.3\"-display-256gb-white",
+                "link": "https://www.apple.com/in/store",
                 "analysis": {
                     "brand": "apple",
                     "product_type": "iphone",
-                    "color": "white",
+                    "color": "black",
                     "features": "camera"
                 }
             }
@@ -31,30 +31,30 @@
     },
     {
         "product": "clock",
-        "confidence": 0.76,
+        "confidence": 0.53,
         "bbox": [
-            192,
-            40,
-            113,
-            82
+            395,
+            180,
+            232,
+            92
         ],
         "avg_color": [
-            239.95898985538528,
-            217.71929635225555,
-            200.47625728469674
+            200.71458020989505,
+            190.50890179910044,
+            181.06493628185908
         ],
-        "crop_path": "C:\\Python Projects\\Product Detection\\auto_zone_project\\data\\products\\product_clock_1_40_192.jpg",
+        "crop_path": "C:\\Python Projects\\Product Detection\\auto_zone_project\\data\\products\\product_clock_1_180_395.jpg",
         "search_results": [
             {
-                "title": "Amazon.in: Timex Smartwatch",
-                "price": "\u20b92,997",
-                "source": "Amazon",
-                "link": "https://www.amazon.in/timex-smartwatch/s?k=timex+smartwatch",
+                "title": "Not a clear image",
+                "price": "",
+                "source": "",
+                "link": "",
                 "analysis": {
-                    "brand": "timex",
-                    "product_type": "watch",
-                    "color": "black",
-                    "features": "space bar"
+                    "brand": "Not clearly visible",
+                    "product_type": "phone",
+                    "color": "white",
+                    "features": "power"
                 }
             }
         ]

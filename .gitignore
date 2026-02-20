@@ -12,7 +12,10 @@ __pycache__/
 *.pyd
 *.bin
 *.pt
-*.data
+.venv
+data/evidence/
+data/products/
+data/zones/
 
 # OS
 .DS_Store

@@ -1,30 +1,30 @@
 [
     {
         "product": "cell phone",
-        "confidence": 0.86,
+        "confidence": 0.7,
         "bbox": [
-            17,
-            80,
-            123,
-            236
+            57,
+            87,
+            105,
+            202
         ],
         "avg_color": [
-            162.63521427587156,
-            142.2215791649442,
-            137.6308047402508
+            172.72621404997642,
+            167.8072135785007,
+            158.44441301272985
         ],
-        "crop_path": "C:\\Python Projects\\Product Detection\\auto_zone_project\\data\\products\\product_cell_phone_0_80_17.jpg",
+        "crop_path": "C:\\Python Projects\\Product Detection\\auto_zone_project\\data\\products\\product_cell_phone_0_87_57.jpg",
         "zone_id": 0,
         "search_results": [
             {
-                "title": "Buy iPhone 17 256GB Black - Apple (IN)",
-                "price": "\u20b964000.00",
-                "source": "Apple",
-                "link": "https://www.apple.com/in/shop/buy-iphone/iphone-17/6.3\"-display-256gb-black",
+                "title": "Apple: All models - Amazon.in",
+                "price": "\u20b91,19,900.00",
+                "source": "Amazon",
+                "link": "https://www.amazon.in/stores/Apple/page/9505ACAA-EF13-4AE6-AB5E-F14749A7822E",
                 "analysis": {
                     "brand": "apple",
                     "product_type": "iphone",
-                    "color": "black",
+                    "color": "white",
                     "features": "touchpad"
                 }
             }

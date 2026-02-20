@@ -12,6 +12,7 @@ __pycache__/
 *.pyd
 *.bin
 *.pt
+*.data
 
 # OS
 .DS_Store

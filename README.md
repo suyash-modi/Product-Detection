@@ -1,6 +1,15 @@
 # Product Detection (Retail Auto-Zone)
 
-Product detection app that uses your webcam: detect products with YOLO/OpenVINO, analyze them with BLIP VQA, then search and show prices in the UI.
+Retail analytics app with live camera: detect products, track customer interactions, and record evidence automatically.
+
+## Features
+
+- **Phase 1: Product Detection** – Detect products in real-time using YOLO/OpenVINO, analyze with BLIP VQA, and search for prices online.
+- **Phase 2: Zone Management** – Create interaction zones around detected products with expanded bounding boxes for better tracking.
+- **Phase 3: Live Analytics Dashboard** – Track per-zone metrics: average dwell time, interaction counts, and live occupancy status. Updates in real-time when customers enter/leave zones.
+- **Phase 4: Evidence Recording** – Automatically record video clips (up to 5 minutes) when customers interact with zones. Saved to `data/evidence/` with zone overlays included.
+
+See [FLOW.md](FLOW.md) for detailed flow of all phases.
 
 ## Prerequisites
 
@@ -84,7 +93,12 @@ Or:
 python -m src.apps.simple_ui
 ```
 
-The Tkinter window opens, camera feed appears, and you can use **DETECT ALL**, **RETRY / ADD MISSED**, and **SEARCH & GET PRICE** from the control panel.
+The Tkinter window opens with:
+- **Live camera feed** (left) – Shows detected zones, prices, and live occupancy indicators
+- **Control panel** (right) – Buttons for detection, search, and zone management
+- **Zone Dashboard** – Real-time metrics: dwell time, interactions, and live status per zone
+
+**Evidence clips** are automatically saved to `auto_zone_project/data/evidence/` when customers leave zones. Each clip includes zone overlays showing which zone was recorded.
 
 ## Quick reference
 

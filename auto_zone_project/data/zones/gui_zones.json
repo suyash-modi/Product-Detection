@@ -1,60 +1,31 @@
 [
     {
         "product": "cell phone",
-        "confidence": 0.84,
+        "confidence": 0.7,
         "bbox": [
-            30,
-            135,
+            1,
+            31,
             159,
-            299
+            305
         ],
         "avg_color": [
-            154.1245030605162,
-            137.00220861992807,
-            130.00176689594244
+            149.39604082895144,
+            129.40484586039798,
+            146.21088772038354
         ],
-        "crop_path": "C:\\Python Projects\\Product Detection\\auto_zone_project\\data\\products\\product_cell_phone_0_135_30.jpg",
+        "crop_path": "C:\\Python Projects\\Product Detection\\auto_zone_project\\data\\products\\product_cell_phone_0_31_1.jpg",
+        "zone_id": 0,
         "search_results": [
             {
-                "title": "Apple Store Online - Apple (IN)",
-                "price": "\u20b9134900.00",
+                "title": "Buy iPhone 17 256GB White - Education - Apple (IN)",
+                "price": "\u20b964000.00",
                 "source": "Apple",
-                "link": "https://www.apple.com/in/store",
+                "link": "https://www.apple.com/in-edu/shop/buy-iphone/iphone-17/6.3\"-display-256gb-white",
                 "analysis": {
                     "brand": "apple",
                     "product_type": "iphone",
-                    "color": "black",
-                    "features": "camera"
-                }
-            }
-        ]
-    },
-    {
-        "product": "clock",
-        "confidence": 0.53,
-        "bbox": [
-            395,
-            180,
-            232,
-            92
-        ],
-        "avg_color": [
-            200.71458020989505,
-            190.50890179910044,
-            181.06493628185908
-        ],
-        "crop_path": "C:\\Python Projects\\Product Detection\\auto_zone_project\\data\\products\\product_clock_1_180_395.jpg",
-        "search_results": [
-            {
-                "title": "Not a clear image",
-                "price": "",
-                "source": "",
-                "link": "",
-                "analysis": {
-                    "brand": "Not clearly visible",
-                    "product_type": "phone",
                     "color": "white",
-                    "features": "power"
+                    "features": "touchpad"
                 }
             }
         ]
